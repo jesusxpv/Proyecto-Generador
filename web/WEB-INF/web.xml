@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <servlet>
+        <servlet-name>ConsultasGenerales</servlet-name>
+        <servlet-class>Controlador.ConsultasGenerales</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TipoArchivo</servlet-name>
+        <servlet-class>Modelo.TipoArchivo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>GenerarArchivo</servlet-name>
+        <servlet-class>Controlador.GenerarArchivo</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ValoresCombos</servlet-name>
+        <servlet-class>Controlador.ValoresCombos</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConsultasGenerales</servlet-name>
+        <url-pattern>/ConsultasGenerales</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TipoArchivo</servlet-name>
+        <url-pattern>/TipoArchivo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GenerarArchivo</servlet-name>
+        <url-pattern>/GenerarArchivo</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ValoresCombos</servlet-name>
+        <url-pattern>/ValoresCombos</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>

@@ -17,7 +17,7 @@ muni varchar(200) not null
 
 
 insert into datos (nom,ape,pais,muni) values
-	("Aaron","Abrilver","Afganistán","Marteo"),
+("Aaron","Abrilver","Afganistán","Marteo"),
 ("Zuzen","Carmonaver","Austria","ConcepciónPápalo"),
 ("Zuriko","Careagaver","Australia","ConcepciónBuenavista"),
 ("Zuri","Cardonaver","Armenia","CoicoyándelasFlores"),
