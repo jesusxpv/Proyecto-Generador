@@ -7,9 +7,9 @@
 package Controlador;
 
 import Modelo.GestionBD;
-import java.io.BufferedWriter;
+import java.awt.Desktop;
 import java.io.File;
-import java.io.FileWriter;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.ResultSet;
@@ -19,18 +19,23 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 
 /**
  *
  * @author Maskatesta
  */
-public class ValoresCombos extends HttpServlet {
-    
-    public String[] BD1 = new String[400];
+public class GenerarCvs extends HttpServlet {
+       public String[] BD1 = new String[400];
     public String[] BD2 = new String[400];
     public String[] BD3 = new String[400];
     public String[] BD4 = new String[400];
     public String[] BD5 = new String[400];
+
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -45,8 +50,7 @@ public class ValoresCombos extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            
-            
+                
             
             ResultSet resultadoBD;
             GestionBD GestionBD = new GestionBD();
@@ -68,13 +72,13 @@ public class ValoresCombos extends HttpServlet {
 
             
             
-            int iteracion=Integer.valueOf(request.getParameter("iteracion2"));
+             int iteracion=Integer.valueOf(request.getParameter("iteracion2"));
             String tipoDato= request.getParameter("campos2");
-            String nameBD =request.getParameter("nameBD");
-            String nameTable=request.getParameter("nameTable");
+            String delimitador =request.getParameter("delimit");
+            String nameArchivo=request.getParameter("nameCVS");
             
-            System.out.println(nameBD);
-            System.out.println(nameTable);
+            System.out.println(delimitador);
+            System.out.println(nameArchivo);
             
             
             
@@ -84,30 +88,35 @@ public class ValoresCombos extends HttpServlet {
                 atributos[i]=request.getParameter("txt"+(i+1));
             }
             
-            String ruta = "C:\\"+nameBD+".sql";
-            File archivo = new File(ruta);
-            BufferedWriter bw;
+              String rutaArchivo = "C:\\"+nameArchivo+".xls";//xls
+        /*Se crea el objeto de tipo File con la ruta del archivo*/
+        File archivoXLS = new File(rutaArchivo);
+        /*Si el archivo existe se elimina*/
+        if(archivoXLS.exists()) archivoXLS.delete();
+        /*Se crea el archivo*/
+        archivoXLS.createNewFile();
+        
+        /*Se crea el libro de excel usando el objeto de tipo Workbook*/
+            Workbook libro = new HSSFWorkbook();
+        /*Se inicializa el flujo de datos con el archivo xls*/
+            FileOutputStream archivo = new FileOutputStream(archivoXLS);
+        
+        /*Utilizamos la clase Sheet para crear una nueva hoja de trabajo dentro del libro que creamos anteriormente*/
+            Sheet hoja = libro.createSheet("Datos");
+        
+        /*Hacemos un ciclo para inicializar los valores de 10 filas de celdas*/
+            Row fila = hoja.createRow(0);
+            Cell celda;
             Random rand = new Random();
-         
-            
-                bw = new BufferedWriter(new FileWriter(archivo));
-                bw.write("create database "+nameBD+"; \r\n");      
-                bw.write("use "+nameBD+"; \r\n\r\n");      
-                
-                bw.write("create table "+nameTable+"(\r\n");      
-                bw.write("id_table int primary key auto_increment,\r\n");
-                
-                    for(int i = 0; i < iteracion; i++){
-                        bw.write(atributos[i]+" varchar(200),\r\n");
-                    }
-                         bw.write("); \r\n\r\n");
-                  
-                int contador=0;
-                     
-               for (int j = 0; j < 1000000; j++) {  
+             for(int f=0;f<iteracion;f++){
+                 celda = fila.createCell(f);
+                 celda.setCellValue(atributos[f]);
+            }
+             
+               for (int j = iteracion; j < (10+iteracion); j++) {  
+                 celda = fila.createCell(j);
                    
-                bw.write("insert into "+nameTable+" values (");
-                bw.write(String.valueOf(j+1)+",");     
+                
                 for (int i = 0; i < tipoDato.length(); i++) {
                     char c=tipoDato.charAt(i);
                     if(c != ','){
@@ -116,41 +125,39 @@ public class ValoresCombos extends HttpServlet {
                             switch (c) {
                             
                             case '1':
-                                bw.write(BD1[rand.nextInt(399)]);
+                                celda.setCellValue(BD1[rand.nextInt(399)]);
                                 break;
                             case '2':
-                                bw.write(BD2[rand.nextInt(399)]);
+                                celda.setCellValue(BD2[rand.nextInt(399)]);
                                 break;
                             case '3':
-                                bw.write(BD3[rand.nextInt(399)]);
+                                celda.setCellValue(BD3[rand.nextInt(399)]);
                                 break;
                             case '4':
-                                bw.write(BD4[rand.nextInt(399)]);
+                                celda.setCellValue(BD4[rand.nextInt(399)]);
                                 break;
                             case '5':
-                                bw.write(String.valueOf(rand.nextInt(9999)));
+                                celda.setCellValue(String.valueOf(rand.nextInt(9999)));
                                 break;
                             case '6':
-                                bw.write(String.valueOf(rand.nextInt(999999999)));
+                                celda.setCellValue(String.valueOf(rand.nextInt(999999999)));
                                 break;
                             case '7':
-                                bw.write(BD1[rand.nextInt(399)]+"@"+BD5[rand.nextInt(399)]);
+                                celda.setCellValue(BD1[rand.nextInt(399)]+"@"+BD5[rand.nextInt(399)]);
                                 break;
                             }
-                                bw.write(",");
+                                celda.setCellValue(String.valueOf(delimitador));
                         }               
                        
                     }  
-                 bw.write(" );\r\n");
+                 
                 }
-                 System.out.println("archivo Terminado");
-                         
-                
-                bw.close();
+               
             
-            out.print("Archivo terminado");
+        libro.write(archivo);
+        archivo.close();
+        Desktop.getDesktop().open(archivoXLS);
         }
-     
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

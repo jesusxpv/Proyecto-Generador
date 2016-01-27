@@ -1,152 +1,107 @@
 var XMLHttp;
-	function startXMLHttp() {
-		if(window.XMLHttpRequest){
-			XMLHttp= new XMLHttpRequest();
-		}else{
-			XMLHttp= ActiveXObject("Microsoft.XMLHTTP");
-		}
+function startXMLHttp() {
+    if(window.XMLHttpRequest){
+        XMLHttp= new XMLHttpRequest();
+    }else{
+        XMLHttp= ActiveXObject("Microsoft.XMLHTTP");
     }
+}
     
     
     
-    function  abc(){
+    function  btnGenerateSql(){
         startXMLHttp();
         var campos="";
+        var atribut="";
         var iteracion=0;
         
+        var nameBD=document.getElementById("txtNameBD").value;
+        var nameTable=document.getElementById("txtNameTable").value;
+        
+        
+        
         for (var i=1;i<11;i++){
-            
-          if(document.getElementById("comb"+i).value > 0){
-              
-              campos+=document.getElementById("comb"+i).value+",";
-              iteracion++;
-          }//end if
+            if(document.getElementById("comb"+i).value > 0){
+                atribut+="txt"+i+"="+document.getElementById("txt"+i).value+"&";
+                campos+=document.getElementById("comb"+i).value+",";
+                iteracion++;
+            }//end if
         }//end for
         
-        var valores;
-        valores="campos2="+campos+"&iteracion2="+iteracion;
-        alert(valores);
-         
-         
-        XMLHttp.open("POST","ValoresCombos", true);
-            XMLHttp.onreadystatechange = function (){
-                    if(XMLHttp.readyState === 4 & XMLHttp.status === 200){
-                                    document.getElementById("abc").innerHTML=XMLHttp.responseText;
-                                    //alert(XMLHttp.responseText);
-                    }
+        if(iteracion===0){
+                document.getElementById("resSQL").innerHTML="Nombre y tipo atributo vacio";
+        }else if (nameBD === null || nameBD.length === 0 ){
+            document.getElementById("resSQL").innerHTML="Base de datos sin nombre";
+        }else if (nameTable === null || nameTable.length === 0 ){
+            document.getElementById("resSQL").innerHTML="Tabla sin nombre";
+        }else{
+            document.getElementById("resSQL").innerHTML="";
+            var valores="campos2="+campos+"&iteracion2="+iteracion+"&"+atribut+"&nameBD="+nameBD+"&nameTable="+nameTable;
+            //alert(valores);
+ 
+            XMLHttp.open("POST","ValoresCombos", true);
+                XMLHttp.onreadystatechange = function (){
+                        if(XMLHttp.readyState === 4 & XMLHttp.status === 200){
+                                        document.getElementById("resSQL").innerHTML=XMLHttp.responseText;
+                                        //alert(XMLHttp.responseText);
+                        }
+                }
+            XMLHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            XMLHttp.send(valores);
             }
-    XMLHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    XMLHttp.send(valores);
 }//end fuction
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*function combBusqueda(a){
-    var tipo=document.getElementById("comb"+a).value; 
-    if(tipo>0){
-        generarArray("comb"+a,tipo);
-    }   
-}
-
-
-function consultar(){
-    startXMLHttp();
-    XMLHttp.open("POST","ConsultasGenerales", true);
-            XMLHttp.onreadystatechange = function (){
-                    if(XMLHttp.readyState === 4 & XMLHttp.status === 200){
-                                    document.getElementById("abc").innerHTML=XMLHttp.responseText;
-                                    //alert(XMLHttp.responseText);
-                    }
+function btnGenerateCsv(){
+    
+       startXMLHttp();
+        var campos2="";
+        var atribut2="";
+        var iteracion2=0;
+        
+        var delimitador=document.getElementById("txtDelimiter").value;
+        var name=document.getElementById("txtNombreCvs").value;
+        
+        
+        
+        for (var i=1;i<11;i++){
+            if(document.getElementById("comb"+i).value > 0){
+                atribut2+="txt"+i+"="+document.getElementById("txt"+i).value+"&";
+                campos2+=document.getElementById("comb"+i).value+",";
+                iteracion2++;
+            }//end if
+        }//end for
+        
+        if(iteracion2===0){
+                document.getElementById("resCVS").innerHTML="Nombre y tipo atributo vacio";
+        }else if (name === null || name.length === 0 ){
+            document.getElementById("resCVS").innerHTML="Ingresar nombre del archivo";
+        }else if (delimitador === null || delimitador.length === 0 ){
+            document.getElementById("resCVS").innerHTML="Delimitador vacio";
+        }else{
+            document.getElementById("resCVS").innerHTML="";
+            var valores="campos2="+campos2+"&iteracion2="+iteracion2+"&"+atribut2+"&delimit="+delimitador+"&nameCVS="+name;
+           alert(valores);
+ 
+            XMLHttp.open("POST","GenerarCvs", true);
+                XMLHttp.onreadystatechange = function (){
+                        if(XMLHttp.readyState === 4 & XMLHttp.status === 200){
+                                        document.getElementById("resSQL").innerHTML=XMLHttp.responseText;
+                                        //alert(XMLHttp.responseText);
+                        }
+                }
+            XMLHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            XMLHttp.send(valores);
             }
-    XMLHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    XMLHttp.send("valor="+1);
     
 }
-*/
-
-/*
-
-function generarArray(combo,tipo){   
-    startXMLHttp();
-    var valores="combo="+combo+"&tipo="+tipo;
-    alert(valores);
-
-    XMLHttp.open("POST","ConsultasGenerales", true);
-            XMLHttp.onreadystatechange = function (){
-                    if(XMLHttp.readyState === 4 & XMLHttp.status === 200){
-                                    document.getElementById("abc").innerHTML=XMLHttp.responseText;
-                                    //alert(XMLHttp.responseText);
-                    }
-            }
-    XMLHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-    XMLHttp.send(valores);
-}
-
-*/
 
 
 
-//botton establesido en linea 206 del index.php
-function btnGenerateSql(){//se ejecuta este metodo al dar click para generar el archivo(txt) en  crearTxt.php
-    generarArchivo("btnSql"); //este valor es para identificar el metodo a ejecutar
-    //alert("SQL");
-}
-
-//botton establesido en linea 206 del index.php
-function btnGenerateCsv(){//se ejecuta este metodo al dar click para generar el archivo(txt) en  crearTxt.php
-    generarArchivo("btnCvs"); //este valor es para identificar el metodo a ejecutar
-    //alert("CVS");
-     
-}
 
 
-function generarArchivo(tipo){
-	startXMLHttp();
-        var datos=obtenerDatos()+"&valor="+tipo;
 
-		XMLHttp.open("POST","GenerarArchivo", true);
-			XMLHttp.onreadystatechange = function (){
-				if(XMLHttp.readyState === 4 & XMLHttp.status === 200){
-						document.getElementById("abc").innerHTML=XMLHttp.responseText;
-						//alert(XMLHttp.responseText);
-				}
-			}
-		XMLHttp.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
-   		XMLHttp.send();
-}
-
-function obterDatos(){
-    var valores;
-    for(var i=0;i<10;i++){
-        valores=valores+"comb"+i+"="+document.getElementById("comb"+i).value+"&";
-    }
-    alert(valores);
-}
 
 

@@ -14,233 +14,240 @@ and open the template in the editor.
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
+
 <body>
 
-<div id="abc">
-	
-</div>
-
 <div class="container">
-	<div class="row">
+        <div class="row">
 
-		<!--
-		<div class="col-md-4 col-md-offset-4">
-			<form class="text-center">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="Número de filas" />
-				</div>
-				<div class="form-group">
-					<input type="button" value="Agregar" class="btn btn-xl" onclick="addFilas()" />
-				</div>
-			</form>
-		</div>
-		-->
-                <button onclick="abc()">abc</button>
-		<div class="col-md-8 col-md-offset-2">	
-		 	<form  id="nomFilas" class="text-center"> 
-		 		<div id="filasAgragadas">
-		 			<ul class='list-inline'>
-		 				<li><input type='text' id="txt1" class='form-control' placeholder='Nombre de columna'></li>
-		 				<li><select  id="comb1" onchange="combBusqueda(1)" class='form-control'>
-		 						<option value="0">Seleccionar tipo de dato</option>
-		 						<option value="1">Nombre</option>
-		 						<option value="2">Apellido</option>
-		 						<option value="3">País</option>
-		 						<option value="4">Municipio</option>
-		 						<option value="5">Codigo postal</option>
-		 						<option value="6">Telefono</option>
-                                                                <option value="7">Correo</option>
-		 					</select>
-		 				</li>
-		 			</ul>
-		 			<ul class='list-inline'>
-		 				<li><input type='text' id="txt2" class='form-control' placeholder='Nombre de columna'></li>
-		 				<li><select id="comb2" onchange="combBusqueda(2)" class='form-control'>
-		 						<option>Seleccionar tipo de dato</option>
-		 						<option value="1">Nombre</option>
-		 						<option value="2">Apellido</option>
-		 						<option value="3">País</option>
-		 						<option value="4">Municipio</option>
-		 						<option value="5">Codigo postal</option>
-		 						<option value="6">Telefono</option>
-                                                                <option value="7">Correo</option>
-		 					</select>
-		 				</li>
-		 			</ul>
-		 			<ul class='list-inline'>
-		 				<li><input type='text' id="txt3" class='form-control' placeholder='Nombre de columna'></li>
-		 				<li><select id="comb3" onchange="combBusqueda(3)" class='form-control'>
-		 						<option>Seleccionar tipo de dato</option>
-		 						<option value="1">Nombre</option>
-		 						<option value="2">Apellido</option>
-		 						<option value="3">País</option>
-		 						<option value="4">Municipio</option>
-		 						<option value="5">Codigo postal</option>
-		 						<option value="6">Telefono</option>
-                                                                <option value="7">Correo</option>
-		 					</select>
-		 				</li>
-		 			</ul>
-		 			<ul class='list-inline'>
-		 				<li><input type='text' id="txt4" class='form-control' placeholder='Nombre de columna'></li>
-		 				<li><select id="comb4" onchange="combBusqueda(4)" class='form-control'>
-		 						<option>Seleccionar tipo de dato</option>
-		 						<option value="1">Nombre</option>
-		 						<option value="2">Apellido</option>
-		 						<option value="3">País</option>
-		 						<option value="4">Municipio</option>
-		 						<option value="5">Codigo postal</option>
-		 						<option value="6">Telefono</option>
-                                                                <option value="7">Correo</option>
-		 					</select>
-		 				</li>
-		 			</ul>
-		 			<ul class='list-inline'>
-		 				<li><input type='text' id="txt5" class='form-control' placeholder='Nombre de columna'></li>
-		 				<li><select id="comb5" onchange="combBusqueda(5)" class='form-control'>
-		 						<option>Seleccionar tipo de dato</option>
-		 						<option value="1">Nombre</option>
-		 						<option value="2">Apellido</option>
-		 						<option value="3">País</option>
-		 						<option value="4">Municipio</option>
-		 						<option value="5">Codigo postal</option>
-		 						<option value="6">Telefono</option>
-                                                                <option value="7">Correo</option>
-		 					</select>
-		 				</li>
-		 			</ul>
-		 			<ul class='list-inline'>
-		 				<li><input type='text' id="txt6" class='form-control' placeholder='Nombre de columna'></li>
-		 				<li><select id="comb6" onchange="combBusqueda(6)" class='form-control'>
-		 						<option>Seleccionar tipo de dato</option>
-		 						<option value="1">Nombre</option>
-		 						<option value="2">Apellido</option>
-		 						<option value="3">País</option>
-		 						<option value="4">Municipio</option>
-		 						<option value="5">Codigo postal</option>
-		 						<option value="6">Telefono</option>
-                                                                <option value="7">Correo</option>
-		 					</select>
-		 				</li>
-		 			</ul>
-		 			<ul class='list-inline'>
-		 				<li><input type='text' id="txt7" class='form-control' placeholder='Nombre de columna'></li>
-		 				<li><select id="comb7" onchange="combBusqueda(7)" class='form-control'>
-		 						<option>Seleccionar tipo de dato</option>
-		 						<option value="1">Nombre</option>
-		 						<option value="2">Apellido</option>
-		 						<option value="3">País</option>
-		 						<option value="4">Municipio</option>
-		 						<option value="5">Codigo postal</option>
-		 						<option value="6">Telefono</option>
-                                                                <option value="7">Correo</option>
-		 					</select>
-		 				</li>
-		 			</ul>
-		 			<ul class='list-inline'>
-		 				<li><input type='text' id="txt8" class='form-control' placeholder='Nombre de columna'></li>
-		 				<li><select  id="comb8" onchange="combBusqueda(8)" class='form-control'>
-		 						<option>Seleccionar tipo de dato</option>
-		 						<option value="1">Nombre</option>
-		 						<option value="2">Apellido</option>
-		 						<option value="3">País</option>
-		 						<option value="4">Municipio</option>
-		 						<option value="5">Codigo postal</option>
-		 						<option value="6">Telefono</option>
-                                                                <option value="7">Correo</option>
-		 					</select>
-		 				</li>
-		 			</ul>
-		 			<ul class='list-inline'>
-		 				<li><input type='text' id="txt9" class='form-control' placeholder='Nombre de columna'></li>
-		 				<li><select id="comb9"  onchange="combBusqueda(9)" class='form-control'>
-		 						<option>Seleccionar tipo de dato</option>
-		 						<option value="1">Nombre</option>
-		 						<option value="2">Apellido</option>
-		 						<option value="3">País</option>
-		 						<option value="4">Municipio</option>
-		 						<option value="5">Codigo postal</option>
-		 						<option value="6">Telefono</option>
-                                                                <option value="7">Correo</option>
-		 					</select>
-		 				</li>
-		 			</ul>
-		 			<ul class='list-inline'>
-		 				<li><input type='text' id="txt10" class='form-control' placeholder='Nombre de columna'></li>
-		 				<li><select id="comb10" onchange="combBusqueda(10)" class='form-control'>
-		 						<option>Seleccionar tipo de dato</option>
-		 						<option value="1">Nombre</option>
-		 						<option value="2">Apellido</option>
-		 						<option value="3">País</option>
-		 						<option value="4">Municipio</option>
-		 						<option value="5">Codigo postal</option>
-		 						<option value="6">Telefono</option>
-                                                                <option value="7">Correo</option>
-		 					</select>
-		 				</li>
-		 			</ul>
-		 		</div>			
-  			</form>
-		</div>
-
-
+                <!--
+                <div class="col-md-4 col-md-offset-4">
+                        <form class="text-center">
+                                <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Número de filas" />
+                                </div>
+                                <div class="form-group">
+                                        <input type="button" value="Agregar" class="btn btn-xl" onclick="addFilas()" />
+                                </div>
+                        </form>
+                </div>
+                -->
+            
+            <div class="col-md-8 col-md-offset-2">	
+                <form  id="nomFilas" class="text-center"> 
+                    <div id="filasAgragadas">
+                        <ul class='list-inline'>
+                            <li><input type='text' id="txt1" class='form-control' placeholder='Nombre de columna'></li>
+                            <li><select  id="comb1" onchange="combBusqueda(1)" class='form-control'>
+                                    <option value="0">Seleccionar tipo de dato</option>
+                                    <option value="1">Nombre</option>
+                                    <option value="2">Apellido</option>
+                                    <option value="3">País</option>
+                                    <option value="4">Municipio</option>
+                                    <option value="5">Codigo postal</option>
+                                    <option value="6">Telefono</option>
+                                    <option value="7">Correo</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class='list-inline'>
+                            <li><input type='text' id="txt2" class='form-control' placeholder='Nombre de columna'></li>
+                            <li><select id="comb2" onchange="combBusqueda(2)" class='form-control'>
+                                    <option value="0">Seleccionar tipo de dato</option>
+                                    <option value="1">Nombre</option>
+                                    <option value="2">Apellido</option>
+                                    <option value="3">País</option>
+                                    <option value="4">Municipio</option>
+                                    <option value="5">Codigo postal</option>
+                                    <option value="6">Telefono</option>
+                                    <option value="7">Correo</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class='list-inline'>
+                            <li><input type='text' id="txt3" class='form-control' placeholder='Nombre de columna'></li>
+                            <li><select id="comb3" onchange="combBusqueda(3)" class='form-control'>
+                                    <option value="0">Seleccionar tipo de dato</option>
+                                    <option value="1">Nombre</option>
+                                    <option value="2">Apellido</option>
+                                    <option value="3">País</option>
+                                    <option value="4">Municipio</option>
+                                    <option value="5">Codigo postal</option>
+                                    <option value="6">Telefono</option>
+                                    <option value="7">Correo</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class='list-inline'>
+                            <li><input type='text' id="txt4" class='form-control' placeholder='Nombre de columna'></li>
+                            <li><select id="comb4" onchange="combBusqueda(4)" class='form-control'>
+                                    <option value="0">Seleccionar tipo de dato</option>
+                                    <option value="1">Nombre</option>
+                                    <option value="2">Apellido</option>
+                                    <option value="3">País</option>
+                                    <option value="4">Municipio</option>
+                                    <option value="5">Codigo postal</option>
+                                    <option value="6">Telefono</option>
+                                    <option value="7">Correo</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class='list-inline'>
+                            <li><input type='text' id="txt5" class='form-control' placeholder='Nombre de columna'></li>
+                            <li><select id="comb5" onchange="combBusqueda(5)" class='form-control'>
+                                    <option value="0">Seleccionar tipo de dato</option>
+                                    <option value="1">Nombre</option>
+                                    <option value="2">Apellido</option>
+                                    <option value="3">País</option>
+                                    <option value="4">Municipio</option>
+                                    <option value="5">Codigo postal</option>
+                                    <option value="6">Telefono</option>
+                                    <option value="7">Correo</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class='list-inline'>
+                            <li><input type='text' id="txt6" class='form-control' placeholder='Nombre de columna'></li>
+                            <li><select id="comb6" onchange="combBusqueda(6)" class='form-control'>
+                                    <option value="0">Seleccionar tipo de dato</option>
+                                    <option value="1">Nombre</option>
+                                    <option value="2">Apellido</option>
+                                    <option value="3">País</option>
+                                    <option value="4">Municipio</option>
+                                    <option value="5">Codigo postal</option>
+                                    <option value="6">Telefono</option>
+                                    <option value="7">Correo</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class='list-inline'>
+                            <li><input type='text' id="txt7" class='form-control' placeholder='Nombre de columna'></li>
+                            <li><select id="comb7" onchange="combBusqueda(7)" class='form-control'>
+                                    <option value="0">Seleccionar tipo de dato</option>
+                                    <option value="1">Nombre</option>
+                                    <option value="2">Apellido</option>
+                                    <option value="3">País</option>
+                                    <option value="4">Municipio</option>
+                                    <option value="5">Codigo postal</option>
+                                    <option value="6">Telefono</option>
+                                    <option value="7">Correo</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class='list-inline'>
+                            <li><input type='text' id="txt8" class='form-control' placeholder='Nombre de columna'></li>
+                            <li><select  id="comb8" onchange="combBusqueda(8)" class='form-control'>
+                                    <option value="0">Seleccionar tipo de dato</option>
+                                    <option value="1">Nombre</option>
+                                    <option value="2">Apellido</option>
+                                    <option value="3">País</option>
+                                    <option value="4">Municipio</option>
+                                    <option value="5">Codigo postal</option>
+                                    <option value="6">Telefono</option>
+                                    <option value="7">Correo</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class='list-inline'>
+                            <li><input type='text' id="txt9" class='form-control' placeholder='Nombre de columna'></li>
+                            <li><select id="comb9"  onchange="combBusqueda(9)" class='form-control'>
+                                    <option value="0">Seleccionar tipo de dato</option>
+                                    <option value="1">Nombre</option>
+                                    <option value="2">Apellido</option>
+                                    <option value="3">País</option>
+                                    <option value="4">Municipio</option>
+                                    <option value="5">Codigo postal</option>
+                                    <option value="6">Telefono</option>
+                                    <option value="7">Correo</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <ul class='list-inline'>
+                            <li><input type='text' id="txt10" class='form-control' placeholder='Nombre de columna'></li>
+                            <li><select id="comb10" onchange="combBusqueda(10)" class='form-control'>
+                                    <option>Seleccionar tipo de dato</option>
+                                    <option value="1">Nombre</option>
+                                    <option value="2">Apellido</option>
+                                    <option value="3">País</option>
+                                    <option value="4">Municipio</option>
+                                    <option value="5">Codigo postal</option>
+                                    <option value="6">Telefono</option>
+                                    <option value="7">Correo</option>
+                                </select>
+                            </li>
+                        </ul>
+                    </div>			
+                </form>
+            </div>
 
 
 
- 
-		<div class="col-md-8 col-md-offset-2">
-			<div>
+            <div class="col-md-8 col-md-offset-2">
+                <div>
 
-		  <!-- Nav tabs -->
-		 		<ul class="nav nav-tabs" role="tablist">
-		    		<li role="presentation" class="active"><a href="#csv" aria-controls="csv" role="tab" data-toggle="tab">Csv</a></li>
-		   			<li role="presentation"><a href="#sql" aria-controls="sql" role="tab" data-toggle="tab">Sql</a></li>
-		  		</ul>
+    <!-- Nav tabs -->
+                  <ul class="nav nav-tabs" role="tablist">
+                  <li role="presentation" class="active"><a href="#csv" aria-controls="csv" role="tab" data-toggle="tab">Csv</a></li>
+                          <li role="presentation"><a href="#sql" aria-controls="sql" role="tab" data-toggle="tab">Sql</a></li>
+                  </ul>
 
-		  <!-- Tab panes -->
-		  		<div class="tab-content">
+    <!-- Tab panes -->
+                  <div class="tab-content">
 
-		    		<div role="tabpanel" class="tab-pane active" id="csv">
-		    			<div class="container-fluid">
-		  					<div class="row">
-		  						<div class="col-md-12">
-		  							<form>
-		  								<div class="form-group">
-		  							 		Caracter(es) delimitador(es) <input type="text" class="text-delim" placeholder="|">
-		  								</div>
-		  								<div class="form-group text-right">
-											<button type="button" class="btn btn-xl" onclick="btnGenerateCsv()"  >Generar Cvs</button>
-										</div>
-		  							</form>
-		  						</div>
-		  					</div>
-		  				</div>	
-		    		</div>
+                  <div role="tabpanel" class="tab-pane active" id="csv">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form>
+                                        <div class="text-center" id="resCVS">
+                                            ooo
+                                        </div>
+                                         <div class="form-group">
+                                            <input type="text" id="txtNombreCvs" class="text-delim" placeholder="Nombre del archivo">
+                                        </div>
+                                        <div class="form-group">
+                                            Caracter(es) delimitador(es) <input type="text" id="txtDelimiter" class="text-delim" placeholder="|">
+                                        </div>
+                                        <div class="form-group text-right">
+                                                <button type="button" class="btn btn-xl" onclick="btnGenerateCsv()"  >Generar Cvs</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>	
+                  </div>
 
-		    		<div role="tabpanel" class="tab-pane" id="sql">
-		    			<div class="container-fluid">
-		  					<div class="row">
-		  						<div class="col-md-12">
-		  							<form>
-		  								<div class="form-group">
-											<input type="text" class="text-name-table" placeholder="Nombre de la tabla">
-										</div>
-		  								<div class="form-group">
-		  							 		<input type="CHECKBOX"> Entrecomillar nombres (tablas-columnas)
-		  								</div>
-		  								<div class="form-group text-right">
-											<button type="button" onclick="btnGenerateSql()" class="btn btn-xl">Generar SQL</button>
-										</div>
-		  							</form>
-		  						</div>
-		  					</div>
-		  				</div>	
-		    		</div>
+                  <div role="tabpanel" class="tab-pane" id="sql">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <form>
+                                        <div class="text-center" id="resSQL">
+                                            
+                                        </div>
+                                        <div class="form-group">
+                                                <input type="text" id="txtNameBD" class="text-name-table" placeholder="Nombre de la base de datos">
+                                        </div>
+                                        <div class="form-group">
+                                                <input type="text" id="txtNameTable" class="text-name-table" placeholder="Nombre de la tabla">
+                                        </div>
+                                        
+                                        <div class="form-group text-right">
+                                                <button type="button" onclick="btnGenerateSql()" class="btn btn-xl">Generar SQL</button>
+                                        </div>
+                                      
+                                    </form>
+                                </div>
+                            </div>
+                        </div>	
+                  </div>
 
-		  		</div> <!-- end contenido pestañas -->
+                  </div> <!-- end contenido pestañas -->
 
-			</div><!-- end pestañas -->
-		</div><!-- end col -->
+                </div><!-- end pestañas -->
+            </div><!-- end col -->
+        </div>
+</div>
 	
 
 
